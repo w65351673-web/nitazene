@@ -42,7 +42,7 @@ export async function POST(request) {
         username: adminUsername,
         isAdmin: true 
       },
-      process.env.JWT_SECRET || process.env.ADMIN_PASSWORD,
+      process.env.JWT_SECRET || 'admin-jwt-secret',
       { expiresIn: '1d' }
     );
     

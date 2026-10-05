@@ -18,14 +18,14 @@ async function seedDatabase() {
     console.log('Cleared existing products');
     
     // Create admin user if it doesn't exist
-    const adminExists = await User.findOne({ email: 'admin@buyresearchchems.com' });
+    const adminExists = await User.findOne({ email: 'admin@nitazenechemicals.com' });
     if (!adminExists) {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash('admin123', salt);
       
       await User.create({
         name: 'Admin User',
-        email: 'admin@buyresearchchems.com',
+        email: 'admin@nitazenechemicals.com',
         password: hashedPassword,
         isAdmin: true,
       });
@@ -134,24 +134,6 @@ async function seedDatabase() {
         featured: false,
       },
       
-      // Opioids
-      {
-        name: 'Opioid Research Compound A',
-        slug: 'opioid-research-compound-a',
-        category: 'opioids',
-        images: [],
-        description: 'High-purity opioid research compound for laboratory analysis. 99%+ purity. For scientific research only.',
-        priceVariants: [
-          { quantity: 1, price: 49.99 },
-          { quantity: 5, price: 219.99 },
-          { quantity: 10, price: 399.99 },
-        ],
-        countInStock: 25,
-        rating: 4.7,
-        numReviews: 0,
-        featured: true,
-      },
-
       // Nitazenes
       {
         name: 'Nitazene Research Compound A',

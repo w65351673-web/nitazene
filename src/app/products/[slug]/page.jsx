@@ -11,15 +11,8 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 export default function ProductDetailPage() {
-  const pricingTiers = [
-    { quantity: 25, price: 250 },
-    { quantity: 50, price: 400 },
-    { quantity: 100, price: 650 },
-    { quantity: 500, price: 1200 },
-    { quantity: 1000, price: 2100 },
-  ];
-  const [selectedGrams, setSelectedGrams] = useState(25);
-  const [selectedTier, setSelectedTier] = useState(pricingTiers[0]);
+  const [selectedGrams, setSelectedGrams] = useState(null);
+  const [selectedTier, setSelectedTier] = useState(null);
 
   const { slug } = useParams();
   const [product, setProduct] = useState(null);
@@ -44,8 +37,13 @@ export default function ProductDetailPage() {
         
         const { data } = await axios.get(endpoint);
         setProduct(data);
-        
-        // priceVariants not used on detail page â€” fixed tiers are used instead
+
+        // Default-select the lowest gram tier from the product's real variants
+        const variants = (data.priceVariants || []).slice().sort((a, b) => a.quantity - b.quantity);
+        if (variants.length) {
+          setSelectedTier(variants[0]);
+          setSelectedGrams(variants[0].quantity);
+        }
       } catch (err) {
         console.error('Error fetching product:', err);
         setError(err.response?.data?.message || 'Failed to load product');
@@ -62,10 +60,9 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (product) {
-      const gramsVariant = {
-        grams: selectedTier.quantity,
-        price: selectedTier.price,
-      };
+      const gramsVariant = selectedTier
+        ? { grams: selectedTier.quantity, price: selectedTier.price }
+        : { grams: 50, price: product.price || 0 };
       addToCart({ ...product }, quantity, gramsVariant);
     }
   };
@@ -92,49 +89,61 @@ export default function ProductDetailPage() {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-white pt-24 pb-20">
-      <div className="container mx-auto px-4 max-w-6xl py-8">
-        {/* Breadcrumb */}
-        <div className="mb-8 flex items-center gap-2 text-sm text-gray-900">
-          <Link href="/" className="hover:text-gray-900">Home</Link>
-          <span>/</span>
-          <Link href="/products" className="hover:text-gray-900">Products</Link>
-          <span>/</span>
-          <Link href={`/products?category=${product.category}`} className="hover:text-gray-900">
-            {product.category}
-          </Link>
-          <span>/</span>
-          <span className="text-gray-900 truncate max-w-[200px]">{product.name}</span>
-        </div>
+  const specs = [
+    ['Category', product.category],
+    ['CAS Number', product.casNumber || '—'],
+    ['Purity', product.purity || '≥ 99%'],
+    ['Form', product.form || 'Powder / crystalline'],
+    ['Storage', product.storage || 'Cool, dry, away from light'],
+    ['Availability', product.countInStock > 0 ? 'In stock' : 'Out of stock'],
+    ['Documentation', 'COA included with order'],
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Product Images */}
-          <div>
-            <div className="relative h-80 md:h-[420px] w-full rounded-2xl overflow-hidden mb-3 bg-gray-50 border border-gray-200">
+  return (
+    <div className="min-h-screen bg-white pt-20 lg:pt-16 pb-28 lg:pb-20">
+      <div className="container mx-auto px-6">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-8 overflow-x-auto whitespace-nowrap scrollbar-hide" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-purple-600 transition-colors">Home</Link>
+          <span>/</span>
+          <Link href="/products" className="hover:text-purple-600 transition-colors">Catalog</Link>
+          <span>/</span>
+          <Link href={`/products?category=${product.category}`} className="hover:text-purple-600 transition-colors">{product.category}</Link>
+          <span>/</span>
+          <span className="text-gray-900 truncate max-w-[220px]">{product.name}</span>
+        </nav>
+
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
+          {/* ===== LEFT — sticky image column ===== */}
+          <div className="lg:sticky lg:top-20 space-y-3">
+            <div className="relative aspect-square w-full rounded-[1.75rem] overflow-hidden bg-[#12081f]">
               {product.images && product.images.length > 0 ? (
                 <ProtectedImage
                   src={product.images[selectedImage]}
                   alt={product.name}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
                   className="object-cover"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-gray-900">
-                  No image
-                </div>
+                <div className="absolute inset-0 flex items-center justify-center text-white/40">No image</div>
               )}
+              <div className="absolute top-4 left-4 flex items-center gap-2">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] px-2.5 py-1 rounded-full bg-white/10 backdrop-blur border border-white/15 text-white/85">{product.category}</span>
+                <span className={`font-mono text-[10px] uppercase tracking-[0.22em] px-2.5 py-1 rounded-full backdrop-blur border ${product.countInStock > 0 ? 'bg-emerald-500/20 border-emerald-400/40 text-emerald-200' : 'bg-red-500/20 border-red-400/40 text-red-200'}`}>
+                  {product.countInStock > 0 ? 'In stock' : 'Sold out'}
+                </span>
+              </div>
             </div>
 
             {product.images && product.images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1">
+              <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                 {product.images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
                     className={`relative h-16 w-16 rounded-xl overflow-hidden border-2 flex-shrink-0 transition-all ${
-                      selectedImage === index ? 'border-sky-500' : 'border-gray-200 hover:border-sky-300'
+                      selectedImage === index ? 'border-purple-600' : 'border-gray-200 hover:border-purple-300'
                     }`}
                   >
                     <ProtectedImage src={image} alt={`${product.name} ${index + 1}`} fill sizes="64px" className="object-cover" />
@@ -144,105 +153,104 @@ export default function ProductDetailPage() {
             )}
           </div>
 
-          {/* Product Info */}
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="bg-sky-50 border border-sky-200 text-sky-600 text-xs px-3 py-1 rounded-full font-bold">
-                {product.category}
-              </span>
-              <span className={`text-xs px-3 py-1 rounded-full font-bold ${
-                product.countInStock > 0
-                  ? 'bg-emerald-50 border border-emerald-200 text-emerald-600'
-                  : 'bg-red-50 border border-red-200 text-red-600'
-              }`}>
-                {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
-              </span>
-            </div>
+          {/* ===== RIGHT — details ===== */}
+          <div>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-[-0.045em] leading-[0.92]">{product.name}</h1>
 
-            <div className="flex items-center gap-3 mb-3 flex-wrap">
-              <h1 className="text-3xl font-extrabold text-gray-900 leading-tight">{product.name}</h1>
-              {product.category?.toLowerCase() === 'opioids' && (
-                <span className="text-xs font-bold bg-cyan-700/60 text-cyan-300 px-2.5 py-1 rounded-full">Powder</span>
-              )}
-            </div>
-
-            {/* Stars */}
-            <div className="flex items-center gap-2 mb-5">
-              <div className="flex items-center">
+            <div className="flex items-center gap-3 mt-5">
+              <div className="flex items-center gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className={`w-4 h-4 ${i < Math.round(product.rating) ? 'text-yellow-400' : 'text-gray-700'}`} />
+                  <FaStar key={i} className={`w-3.5 h-3.5 ${i < Math.round(product.rating || 0) ? 'text-amber-400' : 'text-gray-200'}`} />
                 ))}
               </div>
+              <span className="font-mono text-xs text-gray-400">{(product.rating || 0).toFixed(1)} / 5</span>
             </div>
 
-            {/* Gram selector â€” fixed pricing tiers */}
-            <div className="mb-5">
-              <p className="text-sm font-medium text-gray-900 mb-2">Select quantity</p>
-              <div className="flex flex-wrap gap-2 mb-3">
-                {pricingTiers.map(tier => (
-                  <button
-                    key={tier.quantity}
-                    onClick={() => { setSelectedTier(tier); setSelectedGrams(tier.quantity); }}
-                    className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all ${
-                      selectedGrams === tier.quantity
-                        ? 'bg-sky-500 border-sky-500 text-white shadow-md shadow-sky-500/20'
-                        : 'bg-white border-gray-200 text-gray-900 hover:border-sky-300'
-                    }`}
-                  >
-                    {tier.quantity}g
-                  </button>
-                ))}
-              </div>
-              <div className="text-2xl font-extrabold text-gray-900">
-                &euro;{Number(selectedTier.price).toFixed(2)}
-                <span className="ml-2 text-sm text-gray-900 font-normal">for {selectedGrams}g</span>
-              </div>
-            </div>
-
-            {/* Qty + Add to cart */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden">
-                <button
-                  onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                  disabled={quantity <= 1}
-                  className="w-10 h-11 flex items-center justify-center text-gray-900 hover:bg-gray-100 disabled:opacity-40 transition-colors"
-                >âˆ’</button>
-                <input
-                  type="number" min="1" value={quantity}
-                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-12 bg-transparent text-gray-900 text-center text-sm border-0 focus:outline-none h-11"
-                />
-                <button
-                  onClick={() => setQuantity(prev => prev + 1)}
-                  className="w-10 h-11 flex items-center justify-center text-gray-900 hover:bg-gray-100 transition-colors"
-                >+</button>
-              </div>
-
-              <button
-                onClick={handleAddToCart}
-                disabled={product.countInStock <= 0}
-                className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 font-bold transition-all ${
-                  product.countInStock > 0
-                    ? 'bg-sky-500 hover:bg-sky-600 text-white hover:-translate-y-0.5 shadow-lg shadow-sky-500/20'
-                    : 'bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed'
-                }`}
-              >
-                <FaShoppingCart className="text-sm" />
-                {product.countInStock > 0 ? 'Add to Cart' : 'Out of Stock'}
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Description */}
-        <div className="mt-16">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Description</h2>
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
-            <div className="text-gray-900 text-base leading-loose space-y-4">
-              {product.description.split('\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+            {/* Spec table */}
+            <dl className="mt-10 border-t border-gray-200">
+              {specs.map(([k, v]) => (
+                <div key={k} className="grid grid-cols-[120px_1fr] sm:grid-cols-[160px_1fr] gap-4 py-3.5 border-b border-gray-200">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.22em] text-gray-400 pt-0.5">{k}</dt>
+                  <dd className="text-sm text-gray-900 font-medium">{v}</dd>
+                </div>
               ))}
+            </dl>
+
+            {/* Tiers — real product variants */}
+            <div className="mt-10">
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-gray-400 mb-3">Select quantity</p>
+              <div className="grid grid-cols-4 gap-2">
+                {(product.priceVariants?.length ? product.priceVariants.slice().sort((a, b) => a.quantity - b.quantity) : []).map(tier => {
+                  const active = selectedGrams === tier.quantity;
+                  return (
+                    <button
+                      key={tier.quantity}
+                      onClick={() => { setSelectedTier(tier); setSelectedGrams(tier.quantity); }}
+                      className={`flex flex-col items-center py-3 rounded-2xl border transition-all ${
+                        active ? 'bg-[#12081f] border-[#12081f] text-white' : 'bg-white border-gray-200 text-gray-900 hover:border-purple-400'
+                      }`}
+                    >
+                      <span className="font-display font-bold text-base leading-none">{tier.quantity}g</span>
+                      <span className={`font-mono text-[10px] mt-1.5 ${active ? 'text-fuchsia-200' : 'text-gray-400'}`}>€{tier.price}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Price + CTA */}
+            <div className="mt-8 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-8">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-gray-400 mb-1">Total for {selectedGrams ?? 50}g × {quantity}</p>
+                <p className="font-display text-4xl font-extrabold text-gray-900 tracking-[-0.03em] leading-none">&euro;{(Number(selectedTier?.price ?? product.price ?? 0) * quantity).toFixed(2)}</p>
+              </div>
+
+              <div className="flex items-center gap-3 flex-1">
+                <div className="flex items-center border border-gray-200 rounded-full overflow-hidden">
+                  <button
+                    onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                    disabled={quantity <= 1}
+                    className="w-11 h-12 flex items-center justify-center text-gray-900 hover:bg-gray-100 disabled:opacity-40 transition-colors text-lg"
+                    aria-label="Decrease quantity"
+                  >&minus;</button>
+                  <input
+                    type="number" min="1" value={quantity}
+                    onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                    className="w-12 bg-transparent text-gray-900 text-center text-sm border-0 focus:outline-none focus:ring-0 h-12 p-0"
+                    aria-label="Quantity"
+                  />
+                  <button
+                    onClick={() => setQuantity(prev => prev + 1)}
+                    className="w-11 h-12 flex items-center justify-center text-gray-900 hover:bg-gray-100 transition-colors text-lg"
+                    aria-label="Increase quantity"
+                  >+</button>
+                </div>
+
+                <button
+                  onClick={handleAddToCart}
+                  disabled={product.countInStock <= 0}
+                  className={`flex-1 h-12 px-6 rounded-full flex items-center justify-center gap-2.5 font-display font-bold text-sm transition-colors ${
+                    product.countInStock > 0
+                      ? 'bg-[#12081f] hover:bg-violet-900 text-white'
+                      : 'bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  <FaShoppingCart className="text-sm" />
+                  {product.countInStock > 0 ? 'Add to cart' : 'Out of stock'}
+                </button>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="mt-14">
+              <div className="flex items-center gap-4 mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-purple-600">
+                <span>Notes</span><span className="h-px w-10 bg-purple-300" /><span>Description</span>
+              </div>
+              <div className="text-gray-700 text-base leading-loose space-y-4">
+                {product.description.split('\n').map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           </div>
         </div>

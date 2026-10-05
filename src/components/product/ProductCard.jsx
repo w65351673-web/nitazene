@@ -14,10 +14,10 @@ export default function ProductCard({ product }) {
     return null;
   }
   
-  const displayPrice = product.price && product.price > 0
-    ? product.price
-    : product.priceVariants && product.priceVariants.length > 0
-      ? product.priceVariants.reduce((min, v) => v.price < min ? v.price : min, product.priceVariants[0]?.price || 0)
+  const displayPrice = product.priceVariants && product.priceVariants.length > 0
+    ? product.priceVariants.reduce((min, v) => v.price < min ? v.price : min, product.priceVariants[0]?.price || 0)
+    : product.price && product.price > 0
+      ? product.price
       : 0;
 
   return (

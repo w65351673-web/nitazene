@@ -230,8 +230,8 @@ export default function NewProductPage() {
                 required
               >
                 <option value="cannabinoids">Cannabinoids</option>
-                <option value="opioids">Opioids</option>
                 <option value="nitazenes">Nitazenes</option>
+                <option value="opioids">Opioids</option>
                 <option value="research chemicals">Research Chemicals</option>
               </select>
             </div>

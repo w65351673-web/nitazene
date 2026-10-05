@@ -6,6 +6,11 @@
 
 
 
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display), 'Syne', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 :root {
 
   --foreground-rgb: 17, 24, 39;
@@ -98,6 +103,135 @@ img, picture {
 
 
 
+/* Logo orbit — rotates the electron ring in the NitazeneChemicals logo */
+
+.logo-orbit {
+
+  animation: logoOrbitSpin 10s linear infinite;
+
+}
+
+
+
+@keyframes logoOrbitSpin {
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+/* Shimmering gradient text */
+
+.text-shimmer {
+
+  background: linear-gradient(
+
+    90deg,
+
+    #a855f7 0%,
+
+    #d946ef 25%,
+
+    #f0abfc 50%,
+
+    #d946ef 75%,
+
+    #a855f7 100%
+
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: textShimmerMove 3s linear infinite;
+
+}
+
+
+
+@keyframes textShimmerMove {
+
+  to {
+
+    background-position: -200% center;
+
+  }
+
+}
+
+
+
+/* Blinking typewriter caret */
+
+.typewriter-caret {
+
+  display: inline-block;
+
+  width: 2px;
+
+  height: 1em;
+
+  margin-left: 2px;
+
+  background: #e879f9;
+
+  vertical-align: -0.1em;
+
+  animation: caretBlink 0.8s step-end infinite;
+
+}
+
+
+
+@keyframes caretBlink {
+
+  0%, 100% {
+
+    opacity: 1;
+
+  }
+
+  50% {
+
+    opacity: 0;
+
+  }
+
+}
+
+
+
+/* Hide scrollbars on horizontal rails */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom selection colour */
+
+::selection {
+
+  background: rgba(168, 85, 247, 0.35);
+
+  color: inherit;
+
+}
+
+
+
 /* Accessibility utilities */
 
 .sr-only {
@@ -150,7 +284,7 @@ img, picture {
 
 *:focus-visible {
 
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #a855f7;
 
   outline-offset: 2px;
 
@@ -168,7 +302,7 @@ textarea:focus-visible,
 
 select:focus-visible {
 
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #a855f7;
 
   outline-offset: 2px;
 
@@ -242,7 +376,7 @@ a:not([class]) {
 
   .btn-primary {
 
-    @apply bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded transition-colors duration-200 focus:ring-2 focus:ring-sky-500 focus:ring-offset-2;
+    @apply bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded transition-colors duration-200 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2;
 
   }
 
@@ -250,7 +384,7 @@ a:not([class]) {
 
   .btn-secondary {
 
-    @apply bg-secondary hover:bg-secondary-dark text-white font-semibold py-2 px-4 rounded transition-colors duration-200 focus:ring-2 focus:ring-sky-500 focus:ring-offset-2;
+    @apply bg-secondary hover:bg-secondary-dark text-white font-semibold py-2 px-4 rounded transition-colors duration-200 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2;
 
   }
 

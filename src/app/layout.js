@@ -1,5 +1,4 @@
-import { Space_Grotesk } from "next/font/google";
-import Script from "next/script";
+import { Syne, Manrope } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
@@ -7,37 +6,48 @@ import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ConditionalNavbar from "@/components/layout/ConditionalNavbar";
+import Shell from "@/components/layout/Shell";
 import VisitorTracker from "@/components/tracking/VisitorTracker";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
+import TelegramButton from "@/components/common/TelegramButton";
 
 // Providers
 import AuthProvider from "@/components/auth/AuthProvider";
 import CartProvider from "@/components/cart/CartProvider";
 
-const spaceGrotesk = Space_Grotesk({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
   preload: true,
+  variable: '--font-display',
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://buyresearchchems.com';
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-body',
+});
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'BuyResearchChems | Premium Research Chemicals',
-    template: '%s | BuyResearchChems',
+    default: 'NitazeneChemicals | Premium Research Chemicals',
+    template: '%s | NitazeneChemicals',
   },
-  description: 'Buy premium research chemicals online. BuyResearchChems supplies synthetic cannabinoids, opioids, nitazenes and laboratory-grade compounds with worldwide discreet shipping.',
+  description: 'Buy premium research chemicals online. NitazeneChemicals supplies synthetic cannabinoids, nitazenes, opioids and laboratory-grade compounds with worldwide discreet shipping.',
   keywords: [
     'research chemicals', 'buy research chemicals online',
-    'synthetic cannabinoids', 'opioids', 'nitazenes', 'laboratory chemicals',
+    'synthetic cannabinoids', 'nitazenes', 'opioids', 'laboratory chemicals',
     '5cl-adba', '5cladba', '5fadb', 'jwh-018', 'adb-butinaca', 'ab-pinaca',
     '5F-EDMB-PINACA', 'ADB-FUBINACA', '4FADB', 'AMB-FUBINACA', 'MDMB-4en-PINACA',
-    'BuyResearchChems',
+    'NitazeneChemicals',
   ],
-  other: { 'theme-color': '#0ea5e9' },
+  other: { 'theme-color': '#7e22ce' },
   robots: {
     index: true,
     follow: true,
@@ -53,23 +63,23 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: BASE_URL,
-    siteName: 'BuyResearchChems',
-    title: 'BuyResearchChems | Premium Research Chemicals',
-    description: 'Premium synthetic cannabinoids, opioids, nitazenes and laboratory compounds. Worldwide discreet shipping.',
+    siteName: 'NitazeneChemicals',
+    title: 'NitazeneChemicals | Premium Research Chemicals',
+    description: 'Premium synthetic cannabinoids, nitazenes, opioids and laboratory compounds. Worldwide discreet shipping.',
     images: [
       {
-        url: `${BASE_URL}/images/logo.png`,
+        url: `${BASE_URL}/images/logo.svg`,
         width: 1200,
         height: 630,
-        alt: 'BuyResearchChems — Premium Research Chemicals',
+        alt: 'NitazeneChemicals — Premium Research Chemicals',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BuyResearchChems | Premium Research Chemicals',
-    description: 'Premium synthetic cannabinoids, opioids, nitazenes and laboratory compounds. Worldwide discreet shipping.',
-    images: [`${BASE_URL}/images/logo.png`],
+    title: 'NitazeneChemicals | Premium Research Chemicals',
+    description: 'Premium synthetic cannabinoids, nitazenes, opioids and laboratory compounds. Worldwide discreet shipping.',
+    images: [`${BASE_URL}/images/logo.svg`],
   },
   icons: {
     icon: [
@@ -101,7 +111,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${spaceGrotesk.className} font-sans min-h-screen flex flex-col`}>
+      <body className={`${manrope.className} ${manrope.variable} ${syne.variable} font-sans min-h-screen flex flex-col`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-sky-500 focus:text-white focus:px-4 focus:py-2 focus:rounded"
@@ -114,34 +124,19 @@ export default function RootLayout({ children }) {
             <VisitorTracker />
             <Toaster position="top-center" />
             <WhatsAppButton />
+            <TelegramButton />
             <ConditionalNavbar>
               <Navbar />
             </ConditionalNavbar>
-            <main id="main-content" className="flex-grow">{children}</main>
-            <ConditionalNavbar>
-              <Footer />
-            </ConditionalNavbar>
+            <Shell>
+              <main id="main-content" className="flex-grow">{children}</main>
+              <ConditionalNavbar>
+                <Footer />
+              </ConditionalNavbar>
+            </Shell>
           </CartProvider>
         </AuthProvider>
 
-        {/* Live Chat — add Tawk.to / Intercom widget ID here */}
-        <Script
-          id="tawk-to-widget"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-              (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/6aa49c840f09ed34497bc71b/1k29g6qf9';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
-              })();
-            `,
-          }}
-        />
       </body>
     </html>
   );

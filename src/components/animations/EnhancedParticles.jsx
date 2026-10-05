@@ -49,7 +49,7 @@ export default function EnhancedParticles({ className = '' }) {
               }
             },
             color: {
-              value: ["#9333ea", "#a855f7", "#c084fc", "#e879f9", "#f0abfc", "#e11d48", "#06b6d4"]
+              value: ["#9333ea", "#a855f7", "#c084fc", "#e879f9", "#f0abfc", "#e11d48", "#d946ef"]
             },
             shape: {
               type: ["circle", "triangle", "polygon", "star"],
@@ -160,7 +160,7 @@ export default function EnhancedParticles({ className = '' }) {
                 opacity: 0.8,
                 speed: 3,
                 color: {
-                  value: ["#9333ea", "#e11d48", "#06b6d4"]
+                  value: ["#9333ea", "#e11d48", "#d946ef"]
                 }
               },
               repulse: {
@@ -202,7 +202,7 @@ export default function EnhancedParticles({ className = '' }) {
               },
               particles: {
                 color: {
-                  value: ["#9333ea", "#e11d48", "#06b6d4"]
+                  value: ["#9333ea", "#e11d48", "#d946ef"]
                 },
                 move: {
                   speed: 5

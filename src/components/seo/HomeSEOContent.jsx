@@ -6,7 +6,7 @@ export default function HomeSEOContent() {
           Premium Research Chemicals for Laboratory Use
         </h2>
         <p className="text-gray-900 text-sm leading-relaxed mb-6 text-center max-w-2xl mx-auto">
-          BuyResearchChems supplies a wide range of analytically verified research chemicals, synthetic cannabinoids, opioids and nitazenes to laboratories and qualified researchers worldwide.
+          NitazeneChemicals supplies a wide range of analytically verified research chemicals, synthetic cannabinoids, nitazenes and opioids to laboratories and qualified researchers worldwide.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mt-10">
@@ -18,9 +18,16 @@ export default function HomeSEOContent() {
           </article>
 
           <article className="bg-white border border-gray-200 rounded-2xl p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-3">Opioids & Nitazenes</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-3">Nitazenes</h3>
             <p className="text-gray-900 text-sm leading-relaxed">
-              Our catalog includes opioid and nitazene research compounds such as isotonitazene, metonitazene, protonitazene, etonitazene, fentanyl citrate, morphine sulfate and related analytical standards — all available with documented purity data.
+              Our catalog includes nitazene research compounds such as isotonitazene, metonitazene, protonitazene, etonitazene and related analytical standards — all available with documented purity data.
+            </p>
+          </article>
+
+          <article className="bg-white border border-gray-200 rounded-2xl p-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-3">Opioids</h3>
+            <p className="text-gray-900 text-sm leading-relaxed">
+              High-purity opioid reference compounds including morphine sulfate, codeine phosphate, oxycodone HCl, hydrocodone bitartrate, fentanyl citrate, methadone HCl and tramadol HCl — each verified for pharmacological research and analytical chemistry.
             </p>
           </article>
 

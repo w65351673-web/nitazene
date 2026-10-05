@@ -316,7 +316,7 @@ function OrderDetailContent({ params: paramsPromise }) {
               
               <div>
                 <p className="text-gray-400 mb-1">Payment Method</p>
-                <p className="font-medium">{order.paymentMethod || 'Bank Transfer'}</p>
+                <p className="font-medium">{order.paymentMethod || 'Bitcoin (BTC)'}</p>
               </div>
             </div>
             

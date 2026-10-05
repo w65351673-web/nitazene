@@ -17,14 +17,16 @@ const productSchema = new mongoose.Schema({
     // Allow only specific categories
     validate: {
       validator: function(v) {
-        return ['cannabinoids', 'opioids', 'nitazenes', 'research chemicals'].includes(v.toLowerCase());
+        return ['cannabinoids', 'nitazenes', 'opioids', 'research chemicals'].includes(v.toLowerCase());
       },
       message: props => `${props.value} is not a valid category`
     }
   },
   images: [{ type: String }],
   description: { type: String, required: true },
+  casNumber: { type: String, default: '' },
   price: { type: Number, required: true, default: 0 },
+  priceVariants: [{ quantity: { type: Number }, price: { type: Number } }],
   countInStock: { type: Number, required: true, default: 0 },
   rating: { type: Number, required: true, default: 0 },
   numReviews: { type: Number, required: true, default: 0 },

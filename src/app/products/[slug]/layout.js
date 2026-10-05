@@ -1,7 +1,7 @@
 import dbConnect from '@/lib/utils/db';
 import Product from '@/models/Product';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://buyresearchchems.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
 
     if (!product) {
       return {
-        title: 'Product Not Found | BuyResearchChems',
+        title: 'Product Not Found | NitazeneChemicals',
         description: 'The product you are looking for could not be found.',
       };
     }
@@ -23,12 +23,12 @@ export async function generateMetadata({ params }) {
       ? product.description.slice(0, 155).replace(/\n/g, ' ').trim() + '…'
       : `Buy ${product.name} — high-purity ${product.category} research compound.${priceText}`;
 
-    const image = product.images?.[0] || `${BASE_URL}/images/logo.png`;
+    const image = product.images?.[0] || `${BASE_URL}/images/logo.svg`;
     const categoryKeywords = [product.category, product.category + ' for sale', 'buy ' + product.category].filter(Boolean);
 
     return {
       metadataBase: new URL(BASE_URL),
-      title: `Buy ${product.name} Online | Research Chemicals | BuyResearchChems`,
+      title: `Buy ${product.name} Online | Research Chemicals | NitazeneChemicals`,
       description: shortDesc,
       keywords: [
         product.name,
@@ -37,9 +37,8 @@ export async function generateMetadata({ params }) {
         ...categoryKeywords,
         'research chemicals',
         'synthetic cannabinoids',
-        'opioids',
-        'nitazenes',
-        'BuyResearchChems',
+              'nitazenes',
+        'NitazeneChemicals',
         'high purity',
         'certificate of analysis',
         'lab verified',
@@ -48,7 +47,7 @@ export async function generateMetadata({ params }) {
         canonical: `/products/${slug}`,
       },
       openGraph: {
-        title: `${product.name} | BuyResearchChems`,
+        title: `${product.name} | NitazeneChemicals`,
         description: shortDesc,
         url: `/products/${slug}`,
         type: 'website',
@@ -63,14 +62,14 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${product.name} | BuyResearchChems`,
+        title: `${product.name} | NitazeneChemicals`,
         description: shortDesc,
         images: [image],
       },
     };
   } catch {
     return {
-      title: 'BuyResearchChems | Research Chemicals',
+      title: 'NitazeneChemicals | Research Chemicals',
       description: 'Premium research chemicals — high purity, certificate of analysis, discreet shipping.',
     };
   }

@@ -6,12 +6,12 @@ import { getOrganizationSchema, getWebsiteSchema } from '@/components/seo/SEOKey
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://buyresearchchems.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
-  title: 'Buy Research Chemicals Online | 5cl-adba, 5fadb, JWH-018 | BuyResearchChems',
-  description: 'Buy premium research chemicals online at BuyResearchChems. High-purity synthetic cannabinoids (5cl-adba, 5fadb, jwh-018, adb-butinaca), opioids, nitazenes and lab-grade compounds with discreet worldwide shipping.',
+  title: 'Buy Research Chemicals Online | 5cl-adba, 5fadb, JWH-018 | NitazeneChemicals',
+  description: 'Buy premium research chemicals online at NitazeneChemicals. High-purity synthetic cannabinoids (5cl-adba, 5fadb, jwh-018, adb-butinaca), nitazenes and lab-grade compounds with discreet worldwide shipping.',
   keywords: [
     'buy research chemicals online',
     'research chemicals for sale',
@@ -21,12 +21,11 @@ export const metadata = {
     'jwh-018', 'adb-butinaca', 'ab-pinaca',
     '5F-EDMB-PINACA', 'ADB-FUBINACA', '4FADB', 'AMB-FUBINACA', 'MDMB-4en-PINACA',
     '6cl-adba', '6-cl-adba',
-    'opioids', 'nitazenes', 'benzos',
+    'nitazenes', 'benzos',
     'isotonitazene', 'metonitazene', 'protonitazene', 'butonitazene',
-    'fentanyl', 'morphine sulfate', 'oxycodone', 'hydrocodone', 'codeine phosphate',
     'ketamine', 'alpha-pvp', 'alpha-pihp', '3-cmc', '4-cmc', '3-mmc', '4-mmc',
     'laboratory chemicals', 'premium research chemicals', 'lab verified chemicals',
-    'BuyResearchChems',
+    'NitazeneChemicals',
   ],
   alternates: {
     canonical: BASE_URL,
@@ -35,33 +34,35 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: BASE_URL,
-    siteName: 'BuyResearchChems',
-    title: 'Buy Research Chemicals Online | 5cl-adba, 5fadb, JWH-018 | BuyResearchChems',
-    description: 'Premium synthetic cannabinoids, opioids, nitazenes and laboratory compounds. Worldwide discreet shipping. Shop BuyResearchChems today.',
+    siteName: 'NitazeneChemicals',
+    title: 'Buy Research Chemicals Online | 5cl-adba, 5fadb, JWH-018 | NitazeneChemicals',
+    description: 'Premium synthetic cannabinoids, nitazenes and laboratory compounds. Worldwide discreet shipping. Shop NitazeneChemicals today.',
     images: [
       {
-        url: `${BASE_URL}/images/logo.png`,
+        url: `${BASE_URL}/images/logo.svg`,
         width: 1200,
         height: 630,
-        alt: 'BuyResearchChems — Premium Research Chemicals',
+        alt: 'NitazeneChemicals — Premium Research Chemicals',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Buy Research Chemicals Online | BuyResearchChems',
-    description: 'Premium synthetic cannabinoids, opioids, nitazenes and laboratory compounds. Worldwide discreet shipping.',
-    images: [`${BASE_URL}/images/logo.png`],
+    title: 'Buy Research Chemicals Online | NitazeneChemicals',
+    description: 'Premium synthetic cannabinoids, nitazenes and laboratory compounds. Worldwide discreet shipping.',
+    images: [`${BASE_URL}/images/logo.svg`],
   },
 };
 
 async function getFeaturedProducts() {
   await dbConnect();
   try {
-    const products = await Product.find({ featured: true })
-      .limit(12)
-      .select('-reviews')
-      .lean();
+    // Nitazene products first, then fill remaining slots with other featured items
+    const [nitazenes, others] = await Promise.all([
+      Product.find({ featured: true, category: 'nitazenes' }).limit(12).select('-reviews').lean(),
+      Product.find({ featured: true, category: { $ne: 'nitazenes' } }).limit(12).select('-reviews').lean(),
+    ]);
+    const products = [...nitazenes, ...others].slice(0, 12);
     return JSON.parse(JSON.stringify(products));
   } catch (error) {
     console.error('Error fetching featured products:', error);

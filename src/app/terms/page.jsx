@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://buyresearchchems.com'),
-  title: 'Terms & Conditions | BuyResearchChems',
-  description: 'Read the BuyResearchChems Terms and Conditions. Learn our policies for purchasing research chemicals, synthetic cannabinoids, opioids and laboratory-grade compounds.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com'),
+  title: 'Terms & Conditions | NitazeneChemicals',
+  description: 'Read the NitazeneChemicals Terms and Conditions. Learn our policies for purchasing research chemicals, synthetic cannabinoids, nitazenes and laboratory-grade compounds.',
   keywords: [
-    'terms and conditions', 'terms of service', 'BuyResearchChems terms',
+    'terms and conditions', 'terms of service', 'NitazeneChemicals terms',
     'research chemicals terms', 'buy research chemicals',
   ],
   alternates: { canonical: '/terms' },
@@ -29,7 +29,7 @@ export default function TermsPage() {
           <p className="text-sky-500 text-xs font-bold uppercase tracking-[0.25em] mb-3">Legal</p>
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">Terms &amp; Conditions</h1>
           <p className="text-gray-900 text-base leading-relaxed max-w-xl">
-            By using BuyResearchChems you agree to be bound by these terms. Please read them carefully before placing an order.
+            By using NitazeneChemicals you agree to be bound by these terms. Please read them carefully before placing an order.
           </p>
           <p className="text-gray-400 text-xs mt-4">Last updated: December 3, 2025</p>
         </div>
@@ -40,8 +40,8 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">1. Agreement to Terms</h2>
-          <p className="mb-4">Welcome to BuyResearchChems. By accessing or using our website, mobile application, or services (collectively, the &ldquo;Services&rdquo;), you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our Services.</p>
-          <p className="mb-4">These Terms constitute a legally binding agreement between you and BuyResearchChems.</p>
+          <p className="mb-4">Welcome to NitazeneChemicals. By accessing or using our website, mobile application, or services (collectively, the &ldquo;Services&rdquo;), you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our Services.</p>
+          <p className="mb-4">These Terms constitute a legally binding agreement between you and NitazeneChemicals.</p>
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-700">
             <strong>Important:</strong> Our products are intended for research and laboratory use only. Not for human consumption.
           </div>
@@ -76,7 +76,7 @@ export default function TermsPage() {
 
           <h3 className="text-lg font-bold mb-3">Research Use Only</h3>
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-700 mb-6">
-            <p className="font-bold mb-2">All products sold on BuyResearchChems are:</p>
+            <p className="font-bold mb-2">All products sold on NitazeneChemicals are:</p>
             <ul className="space-y-1 ml-1">
               {['Intended for research and laboratory use ONLY','NOT for human or animal consumption','NOT for medical, therapeutic, or recreational use','To be handled by qualified professionals only','Subject to proper storage and handling requirements'].map(i=><li key={i} className="flex gap-2"><span className="w-1 h-1 rounded-full bg-amber-500 shrink-0 mt-2" />{i}</li>)}
             </ul>
@@ -95,7 +95,7 @@ export default function TermsPage() {
           <p className="mb-6">Your order is an offer to purchase. We reserve the right to accept or reject any order. Order confirmation does not guarantee acceptance.</p>
           <h3 className="text-lg font-bold mb-3">Payment</h3>
           <ul className="space-y-2 ml-1 mb-6">
-            {['Payment must be made at the time of order','We accept bank transfer, Bitcoin, Ethereum, and other agreed methods','All payments are processed securely','You authorize us to charge your payment method for the total amount','Payment information must be accurate and current'].map(i=><li key={i} className="flex gap-3"><Dot /><span>{i}</span></li>)}
+            {['Payment must be made at the time of order','We accept Bitcoin (BTC) only — no other payment methods','All payments are processed securely','You authorize us to charge your payment method for the total amount','Payment information must be accurate and current'].map(i=><li key={i} className="flex gap-3"><Dot /><span>{i}</span></li>)}
           </ul>
           <h3 className="text-lg font-bold mb-3">Order Verification</h3>
           <p>We may require additional verification, including proof of identity, research credentials, or institutional affiliation.</p>
@@ -130,7 +130,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">9. Intellectual Property</h2>
-          <p className="mb-4">All content on our website is owned by or licensed to BuyResearchChems and protected by copyright, trademark, and other IP laws.</p>
+          <p className="mb-4">All content on our website is owned by or licensed to NitazeneChemicals and protected by copyright, trademark, and other IP laws.</p>
           <p className="mb-3">We grant you a limited, non-exclusive, non-transferable license for personal, non-commercial use. You may not:</p>
           <ul className="space-y-2 ml-1">
             {['Reproduce, distribute, or modify our content','Use our trademarks or branding without permission','Create derivative works from our content','Reverse engineer or decompile our software'].map(i=><li key={i} className="flex gap-3"><Dot /><span>{i}</span></li>)}
@@ -152,7 +152,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">11. Limitation of Liability</h2>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <p className="font-bold text-sm mb-3">TO THE MAXIMUM EXTENT PERMITTED BY LAW, BUYRESEARCHCHEMS SHALL NOT BE LIABLE FOR:</p>
+            <p className="font-bold text-sm mb-3">TO THE MAXIMUM EXTENT PERMITTED BY LAW, NITAZENECHEMICALS SHALL NOT BE LIABLE FOR:</p>
             <ul className="space-y-1.5 ml-1 text-sm mb-3">
               {['Indirect, incidental, special, consequential, or punitive damages','Loss of profits, revenue, data, or business opportunities','Personal injury or property damage','Misuse of products or failure to follow safety guidelines','Actions of third parties (shipping carriers, payment processors)','Unauthorized access to your account or information'].map(i=><li key={i} className="flex gap-2"><span className="w-1 h-1 rounded-full bg-gray-400 shrink-0 mt-2" />{i}</li>)}
             </ul>
@@ -162,7 +162,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">12. Indemnification</h2>
-          <p className="mb-4">You agree to indemnify, defend, and hold harmless BuyResearchChems from any claims, damages, losses, liabilities, and expenses arising from:</p>
+          <p className="mb-4">You agree to indemnify, defend, and hold harmless NitazeneChemicals from any claims, damages, losses, liabilities, and expenses arising from:</p>
           <ul className="space-y-2 ml-1">
             {['Your use or misuse of our Services or products','Violation of these Terms','Violation of any laws or regulations','Infringement of third-party rights','Your negligence or willful misconduct'].map(i=><li key={i} className="flex gap-3"><Dot /><span>{i}</span></li>)}
           </ul>
@@ -170,7 +170,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">13. Dispute Resolution</h2>
-          <p className="mb-4">Before filing a claim, you agree to contact us at <a href="mailto:order@researchchems.online" className="text-sky-500 hover:underline">order@researchchems.online</a> to attempt to resolve the dispute informally.</p>
+          <p className="mb-4">Before filing a claim, you agree to contact us on <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">WhatsApp</a> or <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Telegram</a> to attempt to resolve the dispute informally.</p>
           <p className="mb-4">Disputes that cannot be resolved informally shall be resolved through binding arbitration in accordance with applicable rules.</p>
           <p>You agree to resolve disputes on an individual basis and waive the right to participate in class actions or class arbitrations.</p>
         </section>
@@ -192,15 +192,15 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">17. Entire Agreement</h2>
-          <p>These Terms, together with our Privacy Policy and any other legal notices on our website, constitute the entire agreement between you and BuyResearchChems.</p>
+          <p>These Terms, together with our Privacy Policy and any other legal notices on our website, constitute the entire agreement between you and NitazeneChemicals.</p>
         </section>
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">18. Contact Us</h2>
           <p className="mb-5">If you have questions about these Terms, please contact us:</p>
           <div className="border border-gray-200 rounded-xl p-5 space-y-2 text-sm">
-            <p><strong>Email:</strong> <a href="mailto:order@researchchems.online" className="text-sky-500 hover:underline">order@researchchems.online</a></p>
-            <p><strong>Website:</strong> <a href="mailto:order@researchchems.online" className="text-sky-500 hover:underline">Email Us</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Message us on WhatsApp</a></p>
+            <p><strong>Telegram:</strong> <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">@nitazenechemicals</a></p>
             <p><strong>Response Time:</strong> We aim to respond within 48 hours</p>
           </div>
         </section>

@@ -6,15 +6,6 @@ export const primaryKeywords = [
   '6cl-adba', '6-cl-adba',
   'jwh-018',
   'adb-butinaca',
-  // Opioids
-  'morphine sulfate',
-  'heroin', 'diacetylmorphine',
-  'codeine phosphate',
-  'oxycodone',
-  'hydrocodone',
-  'fentanyl', 'fentanyl citrate',
-  'methadone',
-  'tramadol',
   // Nitazenes
   'isotonitazene',
   'metonitazene',
@@ -24,6 +15,14 @@ export const primaryKeywords = [
   'etodesnitazene',
   'n-pyrrolidino etonitazene',
   'bromazolam',
+  // Opioids
+  'morphine sulfate',
+  'codeine phosphate',
+  'oxycodone',
+  'hydrocodone',
+  'fentanyl citrate',
+  'methadone',
+  'tramadol',
   // Research Chemicals
   'crystal meth', 'methamphetamine',
   '3-cmc', '4-cmc',
@@ -39,8 +38,8 @@ export const secondaryKeywords = [
   'laboratory chemicals',
   'premium research chemicals',
   'buy research chemicals online',
-  'opioids',
   'nitazenes',
+  'opioids for research',
   'cannabinoids for research',
   'chemical compounds',
   'laboratory grade chemicals'
@@ -51,14 +50,14 @@ export const allKeywords = [...primaryKeywords, ...secondaryKeywords];
 // Schema.org structured data for better SEO
 export const getProductSchema = (product) => {
   const startingPrice = product.priceVariants?.[0]?.price ?? product.price;
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://buyresearchchems.com';
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: product.images?.[0] || `${BASE_URL}/images/logo.png`,
-    brand: { '@type': 'Brand', name: 'BuyResearchChems' },
+    image: product.images?.[0] || `${BASE_URL}/images/logo.svg`,
+    brand: { '@type': 'Brand', name: 'NitazeneChemicals' },
     offers: {
       '@type': 'Offer',
       price: startingPrice ?? 0,
@@ -76,24 +75,23 @@ export const getProductSchema = (product) => {
 
 // Get base URL for schemas
 const getBaseUrl = () => {
-  return process.env.NEXT_PUBLIC_BASE_URL || 'https://buyresearchchems.com';
+  return process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
 };
 
 // Organization schema
 export const getOrganizationSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'BuyResearchChems',
-  description: 'Premium research chemicals supplier — synthetic cannabinoids, opioids, nitazenes and laboratory-grade compounds for scientific research.',
+  name: 'NitazeneChemicals',
+  description: 'Premium research chemicals supplier — synthetic cannabinoids, nitazenes and laboratory-grade compounds for scientific research.',
   url: getBaseUrl(),
   logo: {
     '@type': 'ImageObject',
-    url: `${getBaseUrl()}/images/logo.png`,
+    url: `${getBaseUrl()}/images/logo.svg`,
   },
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer support',
-    email: 'order@researchchems.online',
     availableLanguage: 'English',
   },
   sameAs: [],
@@ -103,8 +101,8 @@ export const getOrganizationSchema = () => ({
 export const getWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'BuyResearchChems',
-  description: 'Premium research chemicals — synthetic cannabinoids, opioids, nitazenes and laboratory compounds.',
+  name: 'NitazeneChemicals',
+  description: 'Premium research chemicals — synthetic cannabinoids, nitazenes and laboratory compounds.',
   url: getBaseUrl(),
   potentialAction: {
     '@type': 'SearchAction',

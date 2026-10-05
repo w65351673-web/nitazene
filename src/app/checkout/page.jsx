@@ -73,12 +73,23 @@ export default function CheckoutPage() {
           <div className="space-y-4">
             <OrderSummary cartItems={cart} orderDetails={orderDetails} />
 
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-amber-500 font-black text-base leading-none">₿</span>
+                <h3 className="text-sm font-bold text-gray-900">Payment: Bitcoin only</h3>
+              </div>
+              <p className="text-gray-600 text-xs leading-relaxed">
+                We accept Bitcoin (BTC) as our only payment method. After placing your order,
+                we&apos;ll send you our BTC wallet address and the exact amount via WhatsApp or Telegram.
+              </p>
+            </div>
+
             <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
               <h3 className="text-sm font-bold text-gray-900 mb-2">Need help?</h3>
               <p className="text-gray-500 text-xs mb-4 leading-relaxed">
                 Questions about your order? Our team is here to assist.
               </p>
-              <a href="mailto:order@researchchems.online"
+              <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-sky-500 hover:text-sky-600 text-sm font-semibold transition-colors">
                 Contact Support &rarr;
               </a>

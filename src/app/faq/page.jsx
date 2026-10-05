@@ -4,18 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { FaQuestionCircle, FaChevronDown, FaChevronUp, FaSearch } from 'react-icons/fa';
 
-function renderAnswerWithLinks(text) {
-  const emailRegex = /([\w.-]+@[\w.-]+\.\w+)/g;
-  const parts = text.split(emailRegex);
-  return parts.map((part, i) =>
-    emailRegex.test(part) ? (
-      <a key={i} href={`mailto:${part}`} className="text-sky-400 hover:text-sky-300">{part}</a>
-    ) : (
-      part
-    )
-  );
-}
-
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,12 +23,12 @@ export default function FAQPage() {
     {
       category: 'ordering',
       question: 'What payment methods do you accept?',
-      answer: 'We accept various payment methods including bank transfer, cryptocurrency (Bitcoin, Ethereum), and other secure payment options. Contact us at order@researchchems.online after placing your order to receive specific payment instructions for your preferred method.'
+      answer: 'We accept Bitcoin (BTC) only. Bitcoin is the sole payment method — we do not accept bank transfers, cards, or other cryptocurrencies. Contact us on WhatsApp or Telegram after placing your order to receive our Bitcoin payment address and instructions.'
     },
     {
       category: 'ordering',
       question: 'How do I pay for my order?',
-      answer: 'After adding items to your cart and proceeding to checkout, you\'ll need to contact us at order@researchchems.online for payment instructions. We\'ll respond within 24 hours with detailed instructions for your chosen payment method. Once payment is confirmed, we\'ll process and ship your order.'
+      answer: 'After adding items to your cart and proceeding to checkout, you\'ll need to contact us on WhatsApp or Telegram to receive our Bitcoin wallet address. We\'ll respond within 24 hours with the BTC amount and payment instructions. Once your Bitcoin payment is confirmed on the blockchain, we\'ll process and ship your order.'
     },
     {
       category: 'ordering',
@@ -50,12 +38,12 @@ export default function FAQPage() {
     {
       category: 'ordering',
       question: 'Can I cancel my order after placing it?',
-      answer: 'You can cancel your order for a full refund only if it hasn\'t been processed or shipped yet. Orders are typically processed within 24-48 hours. Contact us immediately at order@researchchems.online with your order number if you need to cancel.'
+      answer: 'You can cancel your order for a full refund only if it hasn\'t been processed or shipped yet. Orders are typically processed within 24-48 hours. Contact us immediately on WhatsApp or Telegram with your order number if you need to cancel.'
     },
     {
       category: 'ordering',
       question: 'Do you offer bulk discounts?',
-      answer: 'Yes! We offer volume discounts for bulk orders. Contact us at order@researchchems.online with details about the products and quantities you need, and we\'ll provide a custom quote.'
+      answer: 'Yes! We offer volume discounts for bulk orders. Contact us on WhatsApp or Telegram with details about the products and quantities you need, and we\'ll provide a custom quote.'
     },
     {
       category: 'ordering',
@@ -87,12 +75,12 @@ export default function FAQPage() {
     {
       category: 'shipping',
       question: 'Is packaging discreet?',
-      answer: 'Yes, absolutely. All orders are shipped in plain, unmarked packaging with no mention of BuyResearchChems or product details. The sender name is generic for your privacy.'
+      answer: 'Yes, absolutely. All orders are shipped in plain, unmarked packaging with no mention of NitazeneChemicals or product details. The sender name is generic for your privacy.'
     },
     {
       category: 'shipping',
       question: 'What if my package is lost or stolen?',
-      answer: 'If your package is marked as delivered but you haven\'t received it, wait 24-48 hours and check with neighbors or building management. If still missing, contact us immediately at order@researchchems.online with your tracking number.'
+      answer: 'If your package is marked as delivered but you haven\'t received it, wait 24-48 hours and check with neighbors or building management. If still missing, contact us immediately on WhatsApp or Telegram with your tracking number.'
     },
 
     // Products & Quality
@@ -114,7 +102,7 @@ export default function FAQPage() {
     {
       category: 'products',
       question: 'Can I request a Certificate of Analysis (COA)?',
-      answer: 'Yes! Contact us at order@researchchems.online with your order number and product name, and we\'ll provide the COA for your batch within 24-48 hours.'
+      answer: 'Yes! Contact us on WhatsApp or Telegram with your order number and product name, and we\'ll provide the COA for your batch within 24-48 hours.'
     },
     {
       category: 'products',
@@ -156,7 +144,7 @@ export default function FAQPage() {
     {
       category: 'account',
       question: 'How do I delete my account?',
-      answer: 'Contact us at order@researchchems.online with your account email and request account deletion. We\'ll process your request within 7 business days. Note that order history may be retained for legal compliance.'
+      answer: 'Contact us on WhatsApp or Telegram with your account email and request account deletion. We\'ll process your request within 7 business days. Note that order history may be retained for legal compliance.'
     },
 
     // Returns & Refunds
@@ -200,17 +188,17 @@ export default function FAQPage() {
     {
       category: 'shipping',
       question: 'Can I change my shipping address after ordering?',
-      answer: 'Contact us immediately at order@researchchems.online if you need to change your shipping address. We can only modify the address if the order hasn\'t been shipped yet.'
+      answer: 'Contact us immediately on WhatsApp or Telegram if you need to change your shipping address. We can only modify the address if the order hasn\'t been shipped yet.'
     },
     {
       category: 'account',
       question: 'Do you offer customer support?',
-      answer: 'Yes! Contact us via email at order@researchchems.online, use our contact form, or chat with us using the LiveChat widget. We typically respond within 24 hours.'
+      answer: 'Yes! Reach us on WhatsApp or Telegram, or use our contact form. We typically respond within 24 hours.'
     },
     {
       category: 'ordering',
       question: 'Can I order by phone?',
-      answer: 'Currently, we only accept orders through our website for security and accuracy. If you need assistance placing an order, contact us at order@researchchems.online and we\'ll guide you through the process.'
+      answer: 'Currently, we only accept orders through our website for security and accuracy. If you need assistance placing an order, contact us on WhatsApp or Telegram and we\'ll guide you through the process.'
     },
   ];
 
@@ -305,7 +293,7 @@ export default function FAQPage() {
                 </button>
                 {openIndex === index && (
                   <div className="px-6 pb-5 border-t border-gray-700/40">
-                    <p className="text-gray-900 leading-relaxed text-sm pt-4">{renderAnswerWithLinks(faq.answer)}</p>
+                    <p className="text-gray-900 leading-relaxed text-sm pt-4">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -328,13 +316,13 @@ export default function FAQPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-2">Still have questions?</h2>
           <p className="text-gray-900 text-sm mb-6">Our support team typically responds within 24 hours.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="mailto:order@researchchems.online"
+            <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-500 text-gray-900 font-semibold py-3 px-6 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-sky-800/30 text-sm">
-              Contact Support
+              WhatsApp Support
             </a>
-            <a href="mailto:order@researchchems.online"
+            <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-700 border border-gray-700 text-gray-900 font-semibold py-3 px-6 rounded-xl transition-colors text-sm">
-              Email Us
+              Telegram Us
             </a>
           </div>
         </div>
