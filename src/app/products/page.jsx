@@ -160,6 +160,10 @@ const categoryMeta = {
     label: 'Opioids',
     desc: 'High-purity opioid reference compounds for pharmacological research and analytical chemistry.',
   },
+  etomidate: {
+    label: 'Etomidate',
+    desc: 'High-purity etomidate powders and crystals for analytical and pharmacological research. Lab-tested, COA included.',
+  },
 };
 
 export default async function ProductsPage({ searchParams }) {
@@ -207,6 +211,7 @@ export default async function ProductsPage({ searchParams }) {
               { href: '/products?category=nitazenes', label: 'Nitazenes' },
               { href: '/products?category=opioids', label: 'Opioids' },
               { href: '/products?category=research%20chemicals', label: 'Research Chemicals' },
+              { href: '/products?category=etomidate', label: 'Etomidate' },
             ].map(({ href, label }) => {
               const active = label === 'All' ? !selectedCategory : catKey === label.toLowerCase();
               return (

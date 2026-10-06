@@ -112,7 +112,7 @@ export async function POST(request) {
         productData.category = productData.category.toLowerCase();
         
         // Ensure it's one of the valid categories
-        const validCategories = ['cannabinoids', 'nitazenes', 'opioids', 'research chemicals'];
+        const validCategories = ['cannabinoids', 'nitazenes', 'opioids', 'research chemicals', 'etomidate'];
         if (!validCategories.includes(productData.category)) {
           // Default to a valid category if invalid one is provided
           console.warn(`Invalid category provided: ${productData.category}. Defaulting to 'research chemicals'.`);
@@ -142,7 +142,7 @@ export async function POST(request) {
         category = category.toLowerCase();
         
         // Ensure it's one of the valid categories
-        const validCategories = ['cannabinoids', 'nitazenes', 'opioids', 'research chemicals'];
+        const validCategories = ['cannabinoids', 'nitazenes', 'opioids', 'research chemicals', 'etomidate'];
         if (!validCategories.includes(category)) {
           // Default to a valid category if invalid one is provided
           console.warn(`Invalid category provided: ${category}. Defaulting to 'research chemicals'.`);

@@ -381,6 +381,7 @@ export default function EditProduct({ params }) {
                 <option value="nitazenes">Nitazenes</option>
                 <option value="opioids">Opioids</option>
                 <option value="research chemicals">Research Chemicals</option>
+                <option value="etomidate">Etomidate</option>
               </select>
               {formErrors.category && <p className="text-sky-400 text-sm mt-1">{formErrors.category}</p>}
             </div>

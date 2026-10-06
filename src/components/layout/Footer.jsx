@@ -13,6 +13,7 @@ const columns = [
       { href: '/products?category=nitazenes', label: 'Nitazenes' },
       { href: '/products?category=opioids', label: 'Opioids' },
       { href: '/products?category=research%20chemicals', label: 'Research chemicals' },
+      { href: '/products?category=etomidate', label: 'Etomidate' },
     ],
   },
   {

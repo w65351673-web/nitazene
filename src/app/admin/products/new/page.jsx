@@ -233,6 +233,7 @@ export default function NewProductPage() {
                 <option value="nitazenes">Nitazenes</option>
                 <option value="opioids">Opioids</option>
                 <option value="research chemicals">Research Chemicals</option>
+                <option value="etomidate">Etomidate</option>
               </select>
             </div>
             

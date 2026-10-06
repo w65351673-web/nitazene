@@ -6,7 +6,9 @@ const nextConfig = {
       { hostname: 'images.unsplash.com' },
       { hostname: 'res.cloudinary.com' },
       { hostname: 'plus.unsplash.com' },
-      { hostname: 'source.unsplash.com' }
+      { hostname: 'source.unsplash.com' },
+      { hostname: 'k2paperliquid.com' },
+      { hostname: '**.k2paperliquid.com' }
     ],
     // Image optimization settings for better performance
     formats: ['image/avif', 'image/webp'],
