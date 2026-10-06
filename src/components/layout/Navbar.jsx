@@ -164,7 +164,7 @@ export default function Navbar() {
           <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-emerald-400/80 hover:text-emerald-300 hover:border-emerald-400/40 hover:bg-emerald-500/10 transition-all">
             <FaWhatsapp size={15} />
           </a>
-          <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-sky-400/80 hover:text-sky-300 hover:border-sky-400/40 hover:bg-sky-500/10 transition-all">
+          <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-sky-400/80 hover:text-sky-300 hover:border-sky-400/40 hover:bg-sky-500/10 transition-all">
             <FaTelegramPlane size={15} />
           </a>
         </div>

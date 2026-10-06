@@ -76,11 +76,11 @@ export default function CheckoutPage() {
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-amber-500 font-black text-base leading-none">₿</span>
-                <h3 className="text-sm font-bold text-gray-900">Payment: Bitcoin only</h3>
+                <h3 className="text-sm font-bold text-gray-900">Payment: BTC/USDT only</h3>
               </div>
               <p className="text-gray-600 text-xs leading-relaxed">
-                We accept Bitcoin (BTC) as our only payment method. After placing your order,
-                we&apos;ll send you our BTC wallet address and the exact amount via WhatsApp or Telegram.
+                We accept Bitcoin (BTC) or USDT as our only payment methods. After placing your
+                order, we&apos;ll send you our wallet address and the exact amount via WhatsApp or Telegram.
               </p>
             </div>
 

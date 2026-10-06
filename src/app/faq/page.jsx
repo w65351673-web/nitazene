@@ -23,12 +23,12 @@ export default function FAQPage() {
     {
       category: 'ordering',
       question: 'What payment methods do you accept?',
-      answer: 'We accept Bitcoin (BTC) only. Bitcoin is the sole payment method — we do not accept bank transfers, cards, or other cryptocurrencies. Contact us on WhatsApp or Telegram after placing your order to receive our Bitcoin payment address and instructions.'
+      answer: 'We accept Bitcoin (BTC) and USDT only — no bank transfers, cards, or other cryptocurrencies. Contact us on WhatsApp or Telegram after placing your order to receive our wallet address and payment instructions.'
     },
     {
       category: 'ordering',
       question: 'How do I pay for my order?',
-      answer: 'After adding items to your cart and proceeding to checkout, you\'ll need to contact us on WhatsApp or Telegram to receive our Bitcoin wallet address. We\'ll respond within 24 hours with the BTC amount and payment instructions. Once your Bitcoin payment is confirmed on the blockchain, we\'ll process and ship your order.'
+      answer: 'After adding items to your cart and proceeding to checkout, you\'ll need to contact us on WhatsApp or Telegram to receive our BTC or USDT wallet address. We\'ll respond within 24 hours with the exact amount and payment instructions. Once your payment is confirmed on the blockchain, we\'ll process and ship your order.'
     },
     {
       category: 'ordering',
@@ -320,7 +320,7 @@ export default function FAQPage() {
               className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-500 text-gray-900 font-semibold py-3 px-6 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-sky-800/30 text-sm">
               WhatsApp Support
             </a>
-            <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer"
+            <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-700 border border-gray-700 text-gray-900 font-semibold py-3 px-6 rounded-xl transition-colors text-sm">
               Telegram Us
             </a>

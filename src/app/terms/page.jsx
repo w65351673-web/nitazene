@@ -95,7 +95,7 @@ export default function TermsPage() {
           <p className="mb-6">Your order is an offer to purchase. We reserve the right to accept or reject any order. Order confirmation does not guarantee acceptance.</p>
           <h3 className="text-lg font-bold mb-3">Payment</h3>
           <ul className="space-y-2 ml-1 mb-6">
-            {['Payment must be made at the time of order','We accept Bitcoin (BTC) only — no other payment methods','All payments are processed securely','You authorize us to charge your payment method for the total amount','Payment information must be accurate and current'].map(i=><li key={i} className="flex gap-3"><Dot /><span>{i}</span></li>)}
+            {['Payment must be made at the time of order','We accept Bitcoin (BTC) or USDT only — no other payment methods','All payments are processed securely','You authorize us to charge your payment method for the total amount','Payment information must be accurate and current'].map(i=><li key={i} className="flex gap-3"><Dot /><span>{i}</span></li>)}
           </ul>
           <h3 className="text-lg font-bold mb-3">Order Verification</h3>
           <p>We may require additional verification, including proof of identity, research credentials, or institutional affiliation.</p>
@@ -170,7 +170,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-2xl font-black tracking-tight mb-4">13. Dispute Resolution</h2>
-          <p className="mb-4">Before filing a claim, you agree to contact us on <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">WhatsApp</a> or <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Telegram</a> to attempt to resolve the dispute informally.</p>
+          <p className="mb-4">Before filing a claim, you agree to contact us on <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">WhatsApp</a> or <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Telegram</a> to attempt to resolve the dispute informally.</p>
           <p className="mb-4">Disputes that cannot be resolved informally shall be resolved through binding arbitration in accordance with applicable rules.</p>
           <p>You agree to resolve disputes on an individual basis and waive the right to participate in class actions or class arbitrations.</p>
         </section>
@@ -200,7 +200,7 @@ export default function TermsPage() {
           <p className="mb-5">If you have questions about these Terms, please contact us:</p>
           <div className="border border-gray-200 rounded-xl p-5 space-y-2 text-sm">
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Message us on WhatsApp</a></p>
-            <p><strong>Telegram:</strong> <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">@nitazenechemicals</a></p>
+            <p><strong>Telegram:</strong> <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">@cannachem</a></p>
             <p><strong>Response Time:</strong> We aim to respond within 48 hours</p>
           </div>
         </section>

@@ -377,7 +377,7 @@ function CTAPanel() {
                 <span className="flex items-center gap-3"><FaWhatsapp size={18} /> WhatsApp</span>
                 <FaArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
               </a>
-              <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-between gap-6 bg-[#12081f] hover:bg-violet-900 text-white font-display font-bold px-7 py-5 rounded-full transition-colors min-w-[260px]">
+              <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-between gap-6 bg-[#12081f] hover:bg-violet-900 text-white font-display font-bold px-7 py-5 rounded-full transition-colors min-w-[260px]">
                 <span className="flex items-center gap-3"><FaTelegramPlane size={17} /> Telegram</span>
                 <FaArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
               </a>

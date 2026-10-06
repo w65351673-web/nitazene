@@ -13,7 +13,7 @@ import {
   FaCheckCircle,
 } from 'react-icons/fa';
 
-const TELEGRAM_USERNAME = 'nitazenechemicals';
+const TELEGRAM_USERNAME = 'cannachem';
 const WHATSAPP_NUMBER = '15125922145';
 
 function buildMessage({ name, contact, phone, address, notes }, cart, orderDetails) {
@@ -101,7 +101,7 @@ export default function OrderContactForm({ cart, orderDetails }) {
         <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto">
           {sentVia === 'whatsapp' ? 'WhatsApp' : 'Telegram'} has been opened with your order details — just hit send. We&apos;ll reply to{' '}
           <span className="font-semibold text-gray-900">{form.contact}</span> within 24 hours
-          with our Bitcoin (BTC) wallet address and payment instructions. We accept Bitcoin only.
+          with our Bitcoin (BTC) or USDT wallet address and payment instructions. We accept BTC/USDT only.
         </p>
       </div>
     );
@@ -118,8 +118,8 @@ export default function OrderContactForm({ cart, orderDetails }) {
       <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-6">
         <span className="text-amber-500 font-black text-base mt-0.5 shrink-0 leading-none">₿</span>
         <p className="text-xs text-gray-600 leading-relaxed">
-          <span className="font-bold text-gray-900">We accept Bitcoin (BTC) only.</span>{' '}
-          After submitting your order we&apos;ll send our BTC wallet address and the exact
+          <span className="font-bold text-gray-900">We accept Bitcoin (BTC) or USDT only.</span>{' '}
+          After submitting your order we&apos;ll send our wallet address and the exact
           amount via your chosen contact method.
         </p>
       </div>

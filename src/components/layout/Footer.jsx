@@ -52,13 +52,13 @@ export default function Footer() {
                 <span className="flex items-center gap-3"><FaWhatsapp className="text-emerald-400" size={16} /> WhatsApp support</span>
                 <FaArrowRight size={11} className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
               </a>
-              <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-between gap-4 border border-sky-400/30 hover:border-sky-400 hover:bg-sky-500/10 text-white font-semibold text-sm px-5 py-3.5 rounded-full transition-all">
-                <span className="flex items-center gap-3"><FaTelegramPlane className="text-sky-400" size={15} /> @nitazenechemicals</span>
+              <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-between gap-4 border border-sky-400/30 hover:border-sky-400 hover:bg-sky-500/10 text-white font-semibold text-sm px-5 py-3.5 rounded-full transition-all">
+                <span className="flex items-center gap-3"><FaTelegramPlane className="text-sky-400" size={15} /> @cannachem</span>
                 <FaArrowRight size={11} className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
               </a>
               <div className="inline-flex items-center gap-3 border border-amber-400/30 bg-amber-500/10 text-white font-semibold text-sm px-5 py-3.5 rounded-full">
                 <span className="text-amber-400 font-black text-lg leading-none">₿</span>
-                <span>Payment: <span className="text-amber-300">Bitcoin (BTC) only</span></span>
+                <span>Payment: <span className="text-amber-300">Bitcoin (BTC/USDT) only</span></span>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 border-t border-white/[0.08]">
           <p className="text-white/35 text-xs">&copy; {new Date().getFullYear()} NitazeneChemicals. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-5 gap-y-1 text-[11px] text-white/35">
-            {['Lab verified', 'Batch COA', 'Discreet packaging', '48h dispatch', 'Bitcoin only'].map(b => (
+            {['Lab verified', 'Batch COA', 'Discreet packaging', '48h dispatch', 'BTC/USDT only'].map(b => (
               <span key={b} className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-fuchsia-400" />{b}</span>
             ))}
           </div>

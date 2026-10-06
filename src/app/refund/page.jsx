@@ -153,7 +153,7 @@ export default function RefundPolicyPage() {
               <p className="font-bold text-gray-900 text-sm mb-1">Original Payment Method</p>
               <p className="text-sm mb-2">Refunds go to the original payment method used.</p>
               <div className="flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-400">
-                <span>Bitcoin (BTC): sent to your wallet within 3-5 business days</span>
+                <span>BTC/USDT: sent to your wallet within 3-5 business days</span>
                 <span>Store credit: instant</span>
               </div>
             </div>
@@ -265,7 +265,7 @@ export default function RefundPolicyPage() {
                 <li key={item} className="flex gap-2"><span className="w-1 h-1 rounded-full bg-amber-500 shrink-0 mt-2" />{item}</li>
               ))}
             </ul>
-            <p className="font-bold">Please contact us first on <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">WhatsApp</a> or <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Telegram</a>.</p>
+            <p className="font-bold">Please contact us first on <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">WhatsApp</a> or <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Telegram</a>.</p>
           </div>
         </section>
 
@@ -277,7 +277,7 @@ export default function RefundPolicyPage() {
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">Message us on WhatsApp</a></p>
             <p><strong>Message:</strong> Return Request - Order #[Your Order Number]</p>
             <p><strong>Response Time:</strong> Within 24 hours</p>
-            <p><strong>Telegram:</strong> <a href="https://t.me/nitazenechemicals" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">@nitazenechemicals</a></p>
+            <p><strong>Telegram:</strong> <a href="https://t.me/cannachem" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:underline">@cannachem</a></p>
           </div>
           <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 text-sm">
             <p className="font-bold mb-2">Include in Your Message:</p>
@@ -305,7 +305,7 @@ export default function RefundPolicyPage() {
               <p className="font-bold text-gray-900 mb-2">Refund Time</p>
               <ul className="space-y-1">
                 <li className="flex gap-2"><span className="w-1 h-1 rounded-full bg-sky-400 shrink-0 mt-2" />Processing: 7-14 days</li>
-                <li className="flex gap-2"><span className="w-1 h-1 rounded-full bg-sky-400 shrink-0 mt-2" />Bitcoin (BTC): 3-5 days to your wallet</li>
+                <li className="flex gap-2"><span className="w-1 h-1 rounded-full bg-sky-400 shrink-0 mt-2" />BTC/USDT: 3-5 days to your wallet</li>
               </ul>
             </div>
           </div>
