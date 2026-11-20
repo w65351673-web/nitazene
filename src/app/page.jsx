@@ -6,12 +6,12 @@ import { getOrganizationSchema, getWebsiteSchema } from '@/components/seo/SEOKey
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.nitazenechemicals.com';
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: 'Buy Research Chemicals Online | 5cl-adba, 5fadb, JWH-018 | NitazeneChemicals',
-  description: 'Buy premium research chemicals online at NitazeneChemicals. High-purity synthetic cannabinoids (5cl-adba, 5fadb, jwh-018, adb-butinaca), nitazenes and lab-grade compounds with discreet worldwide shipping.',
+  description: 'Buy premium research chemicals online at NitazeneChemicals. High-purity synthetic cannabinoids (5cl-adba, 5fadb, jwh-018, adb-butinaca), nitazenes, opioids, etomidate and lab-grade compounds with discreet worldwide shipping.',
   keywords: [
     'buy research chemicals online',
     'research chemicals for sale',
@@ -21,8 +21,13 @@ export const metadata = {
     'jwh-018', 'adb-butinaca', 'ab-pinaca',
     '5F-EDMB-PINACA', 'ADB-FUBINACA', '4FADB', 'AMB-FUBINACA', 'MDMB-4en-PINACA',
     '6cl-adba', '6-cl-adba',
-    'nitazenes', 'benzos',
-    'isotonitazene', 'metonitazene', 'protonitazene', 'butonitazene',
+    'nitazenes', 'benzos', 'bromazolam',
+    'isotonitazene', 'metonitazene', 'protonitazene', 'butonitazene', 'etonitazene',
+    'n-pyrrolidino etonitazene', 'flunitazene', 'clonitazene',
+    'opioids', 'buprenorphine powder', 'oxycodone powder', 'hydromorphone powder', 'fentanyl powder',
+    'etomidate', 'etomidate powder', 'etomidate crystal', 'medetomidine', 'tiletamine',
+    'cychlorphine', 'spirochlorphine',
+    'mdma', 'mdphp', 'u-47700', 'kratom powder', 'crystal meth', '2fdck',
     'ketamine', 'alpha-pvp', 'alpha-pihp', '3-cmc', '4-cmc', '3-mmc', '4-mmc',
     'laboratory chemicals', 'premium research chemicals', 'lab verified chemicals',
     'NitazeneChemicals',
@@ -36,7 +41,7 @@ export const metadata = {
     url: BASE_URL,
     siteName: 'NitazeneChemicals',
     title: 'Buy Research Chemicals Online | 5cl-adba, 5fadb, JWH-018 | NitazeneChemicals',
-    description: 'Premium synthetic cannabinoids, nitazenes and laboratory compounds. Worldwide discreet shipping. Shop NitazeneChemicals today.',
+    description: 'Premium synthetic cannabinoids, nitazenes, opioids, etomidate and laboratory compounds. Worldwide discreet shipping. Shop NitazeneChemicals today.',
     images: [
       {
         url: `${BASE_URL}/images/logo.svg`,

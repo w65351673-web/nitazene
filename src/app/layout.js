@@ -31,20 +31,22 @@ const manrope = Manrope({
   variable: '--font-body',
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.nitazenechemicals.com';
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     default: 'NitazeneChemicals | Premium Research Chemicals',
-    template: '%s | NitazeneChemicals',
+    template: '%s',
   },
-  description: 'Buy premium research chemicals online. NitazeneChemicals supplies synthetic cannabinoids, nitazenes, opioids and laboratory-grade compounds with worldwide discreet shipping.',
+  description: 'Buy premium research chemicals online. NitazeneChemicals supplies synthetic cannabinoids, nitazenes, opioids, etomidate and laboratory-grade compounds with worldwide discreet shipping.',
   keywords: [
     'research chemicals', 'buy research chemicals online',
-    'synthetic cannabinoids', 'nitazenes', 'opioids', 'laboratory chemicals',
+    'synthetic cannabinoids', 'nitazenes', 'opioids', 'etomidate', 'laboratory chemicals',
     '5cl-adba', '5cladba', '5fadb', 'jwh-018', 'adb-butinaca', 'ab-pinaca',
     '5F-EDMB-PINACA', 'ADB-FUBINACA', '4FADB', 'AMB-FUBINACA', 'MDMB-4en-PINACA',
+    'isotonitazene', 'metonitazene', 'protonitazene', 'etomidate powder', 'medetomidine',
+    'mdma', 'mdphp', 'u-47700', 'kratom powder', '3-mmc', '3-cmc', 'alpha-pvp',
     'NitazeneChemicals',
   ],
   other: { 'theme-color': '#7e22ce' },
@@ -65,7 +67,7 @@ export const metadata = {
     url: BASE_URL,
     siteName: 'NitazeneChemicals',
     title: 'NitazeneChemicals | Premium Research Chemicals',
-    description: 'Premium synthetic cannabinoids, nitazenes, opioids and laboratory compounds. Worldwide discreet shipping.',
+    description: 'Premium synthetic cannabinoids, nitazenes, opioids, etomidate and laboratory compounds. Worldwide discreet shipping.',
     images: [
       {
         url: `${BASE_URL}/images/logo.svg`,
@@ -78,7 +80,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'NitazeneChemicals | Premium Research Chemicals',
-    description: 'Premium synthetic cannabinoids, nitazenes, opioids and laboratory compounds. Worldwide discreet shipping.',
+    description: 'Premium synthetic cannabinoids, nitazenes, opioids, etomidate and laboratory compounds. Worldwide discreet shipping.',
     images: [`${BASE_URL}/images/logo.svg`],
   },
   icons: {

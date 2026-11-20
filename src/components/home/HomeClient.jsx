@@ -373,7 +373,7 @@ function CTAPanel() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#12081f]/50 to-transparent" />
                 <span className="absolute bottom-3 left-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/90">Verified in-house lab</span>
               </div>
-              <a href="https://wa.me/15125922145" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-between gap-6 bg-emerald-500 hover:bg-emerald-400 text-white font-display font-bold px-7 py-5 rounded-full transition-colors min-w-[260px]">
+              <a href="https://wa.me/19049469037" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-between gap-6 bg-emerald-500 hover:bg-emerald-400 text-white font-display font-bold px-7 py-5 rounded-full transition-colors min-w-[260px]">
                 <span className="flex items-center gap-3"><FaWhatsapp size={18} /> WhatsApp</span>
                 <FaArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
               </a>

@@ -1,6 +1,8 @@
 import dbConnect from '@/lib/utils/db';
 import Product from '@/models/Product';
 
+export const revalidate = 3600;
+
 export default async function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.nitazenechemicals.com';
 
@@ -23,6 +25,12 @@ export default async function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/faq`,
@@ -56,11 +64,20 @@ export default async function sitemap() {
     },
   ];
 
+  // Category landing pages
+  const categories = ['cannabinoids', 'nitazenes', 'opioids', 'research chemicals', 'etomidate'];
+  const categoryPages = categories.map((c) => ({
+    url: `${baseUrl}/products?category=${encodeURIComponent(c)}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority: 0.85,
+  }));
+
   // Fetch all products from database
   let productPages = [];
   try {
     await dbConnect();
-    const products = await Product.find({}).select('slug updatedAt').lean();
+    const products = await Product.find({ slug: { $exists: true, $ne: '' } }).select('slug updatedAt').lean();
     
     productPages = products.map((product) => ({
       url: `${baseUrl}/products/${product.slug}`,
@@ -74,5 +91,5 @@ export default async function sitemap() {
   }
 
   // Always return at least static pages
-  return [...staticPages, ...productPages];
+  return [...staticPages, ...categoryPages, ...productPages];
 }

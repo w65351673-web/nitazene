@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import ProductList from '@/components/product/ProductList';
 import dbConnect from '@/lib/utils/db';
 import Product from '@/models/Product';
+import { getCategoryKeywords } from '@/components/seo/SEOKeywords';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,34 +10,41 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams;
   const category = params?.category || '';
-  
-  // Always use /products as canonical to avoid duplicate content from query params
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com';
-  
-  const categoryKeywords = category
-    ? `${category.toLowerCase()}, ${category.toLowerCase()} for sale, buy ${category.toLowerCase()}`
-    : 'research chemicals, research chemicals for sale, buy research chemicals online, synthetic cannabinoids, buy synthetic cannabinoids, nitazenes';
+  const catKey = category.toLowerCase();
+  const catInfo = categoryMeta[catKey] || null;
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.nitazenechemicals.com';
+
+  // Known categories get their own canonical; anything else (search, sort, unknown) folds into /products
+  const canonical = catInfo ? `/products?category=${encodeURIComponent(catKey)}` : '/products';
+
+  const keywords = catInfo
+    ? [...getCategoryKeywords(catKey), 'high purity', 'certificate of analysis', 'discreet worldwide shipping', 'NitazeneChemicals']
+    : [
+        'research chemicals', 'research chemicals for sale', 'buy research chemicals online',
+        'synthetic cannabinoids', 'nitazenes', 'opioids', 'etomidate',
+        '5cl-adba', '5fadb', 'jwh-018', 'adb-butinaca', 'isotonitazene', 'metonitazene',
+        'etomidate powder', 'medetomidine', 'mdma', 'mdphp', 'u-47700', 'kratom powder',
+        'alpha-pvp', '3-mmc', 'laboratory chemicals', 'high purity', 'NitazeneChemicals',
+      ];
+
+  const title = catInfo
+    ? `Buy ${catInfo.label} Online | ${catInfo.label} for Sale | NitazeneChemicals`
+    : 'Research Chemicals for Sale | Cannabinoids, Nitazenes, Opioids & Etomidate | NitazeneChemicals';
+  const description = catInfo
+    ? `${catInfo.desc} Discreet worldwide shipping, pay with Bitcoin (BTC/USDT).`
+    : 'Buy premium research chemicals online: synthetic cannabinoids (5cl-adba, 5fadb, jwh-018), nitazenes, opioids, etomidate and lab-grade compounds. COA included, discreet worldwide shipping.';
 
   return {
     metadataBase: new URL(baseUrl),
-    title: category
-      ? `Buy ${category} Online | Research Chemicals | NitazeneChemicals`
-      : 'Research Chemicals for Sale | 5cl-adba, 5fadb, JWH-018 | NitazeneChemicals',
-    description: category
-      ? `Buy premium ${category.toLowerCase()} online at NitazeneChemicals. High-purity 5cl-adba, 5cladba, 5fadb, jwh-018, adb-butinaca and more — lab-verified with discreet worldwide shipping.`
-      : 'Buy premium research chemicals online. Browse 5cl-adba, 5cladba, 5fadb, jwh-018, adb-butinaca, ab-pinaca, 5F-EDMB-PINACA, ADB-FUBINACA, 4FADB, AMB-FUBINACA, MDMB-4en-PINACA and other lab-grade synthetic cannabinoids and nitazenes.',
-    keywords: `${categoryKeywords}, 5cl-adba, 5cladba, 5fadb, jwh-018, adb-butinaca, ab-pinaca, 5F-EDMB-PINACA, ADB-FUBINACA, 4FADB, AMB-FUBINACA, MDMB-4en-PINACA, 6cl-adba, isotonitazene, ketamine, alpha-pvp, laboratory chemicals, high purity, NitazeneChemicals`,
-    alternates: {
-      canonical: '/products', // Always point to /products to avoid duplicate content from query params
-    },
+    title,
+    description,
+    keywords,
+    alternates: { canonical },
     openGraph: {
-      title: category
-        ? `Buy ${category} Online | Research Chemicals | NitazeneChemicals`
-        : 'Research Chemicals for Sale | 5cl-adba, 5fadb, JWH-018 | NitazeneChemicals',
-      description: category
-        ? `Browse premium ${category.toLowerCase()} at NitazeneChemicals. Lab-verified compounds with discreet worldwide shipping.`
-        : 'Browse premium research chemicals: 5cl-adba, 5cladba, 5fadb, jwh-018, adb-butinaca and more. Lab-verified with discreet worldwide shipping.',
-      url: '/products',
+      title,
+      description,
+      url: canonical,
       type: 'website',
     },
   };

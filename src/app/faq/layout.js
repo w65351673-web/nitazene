@@ -1,5 +1,5 @@
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.nitazenechemicals.com'),
   title: 'FAQ | Buy Research Chemicals Online | NitazeneChemicals',
   description: 'Get answers about buying research chemicals online, shipping, payments, product purity, COAs and more at NitazeneChemicals.',
   keywords: [

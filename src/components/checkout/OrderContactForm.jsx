@@ -14,7 +14,7 @@ import {
 } from 'react-icons/fa';
 
 const TELEGRAM_USERNAME = 'cannachem';
-const WHATSAPP_NUMBER = '15125922145';
+const WHATSAPP_NUMBER = '19049469037';
 
 function buildMessage({ name, contact, phone, address, notes }, cart, orderDetails) {
   const itemLines = cart

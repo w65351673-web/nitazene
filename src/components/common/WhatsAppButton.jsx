@@ -1,7 +1,7 @@
 import { FaWhatsapp } from 'react-icons/fa';
 
 export default function WhatsAppButton() {
-  const whatsappNumber = '15125922145'; // +1 512 592 2145
+  const whatsappNumber = '19049469037'; // +1 904 946 9037
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
   return (

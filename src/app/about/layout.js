@@ -1,5 +1,5 @@
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://nitazenechemicals.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.nitazenechemicals.com'),
   title: 'About NitazeneChemicals | Trusted Research Chemicals Supplier',
   description: 'Learn about NitazeneChemicals — a leading supplier of high-purity research chemicals, synthetic cannabinoids (5cl-adba, 5fadb, jwh-018), nitazenes and laboratory-grade compounds with COA and discreet worldwide shipping.',
   keywords: [
